@@ -44,3 +44,7 @@ test('correctly increments 0.0', () => {
 test('correctly increments 9', () => {
     expect(nextVersion('9')).toBe('10');
 });
+
+test('correctly increments 4.1.9.9.5.0.9', () => {
+    expect(nextVersion('4.1.9.9.5.0.9')).toBe('4.1.9.9.5.1.0');
+});
