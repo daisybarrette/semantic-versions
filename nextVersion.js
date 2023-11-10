@@ -6,9 +6,10 @@ function nextVersion(currentVersion) {
 
     const nextVersionArray = currentVersionArray.map((num) => parseInt(num));
 
-    console.log(nextVersionArray);
-
     console.log('nextVersionArray ', nextVersionArray);
+
+    // reverse so it's nicer to loop through
+    nextVersionArray.reverse();
 
     // the last element is always incremented
     // if it's between 0 and 8, add 1
@@ -16,7 +17,31 @@ function nextVersion(currentVersion) {
 
     // loop through elements, possibly use recursion?
 
-    return currentVersion;
+    let i = 0;
+
+    while (i < nextVersionArray.length) {
+        // standard case
+        if (nextVersionArray[i] < 9) {
+            nextVersionArray[i] = nextVersionArray[i] + 1;
+            break; // finished incrementing, break out of loop
+        }
+
+        // special case: digit is 9 and needs to be rolled over to 0
+        if (nextVersionArray[i] === 9) {
+            nextVersionArray[i] = 0;
+            // continue because we need to increment the next digit as well
+        }
+
+        i++;
+    }
+
+    console.log(nextVersionArray);
+
+    const finalVersion = nextVersionArray.reverse().join('.');
+
+    console.log(finalVersion);
+
+    return finalVersion;
 }
 
 module.exports = nextVersion;
