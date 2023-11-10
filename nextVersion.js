@@ -12,7 +12,9 @@ function nextVersion(currentVersion) {
     /**
      * To compute the next version number, do the following, starting with the last element in the array:
      *      1. If it's between 0 and 8, add 1
-     *      2. If it's 9, set to 0, and begin at step 1 with the next element in the sequence
+     *      2. If it's 9, set it to 0, and begin again at step 1 with the next element in the sequence (moving right-to-left)
+     *
+     * Special case: the first element should never be set to zero, and can instead be incremented by adding 1, if necessary.
      */
 
     // Based on the assumptions above, the array has at least one element, therefore i >= 0
