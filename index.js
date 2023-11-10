@@ -1,10 +1,8 @@
 const nextVersion = require('./nextVersion');
 
 function main() {
-    const args = process.argv;
-    console.log(args);
-
     // ASSUMPTION: Exactly one valid string argument is being passed via the command line
+    const args = process.argv;
     const currentVersion = args[2];
 
     const result = nextVersion(currentVersion);
