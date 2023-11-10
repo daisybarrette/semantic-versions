@@ -36,6 +36,10 @@ test('correctly increments 0', () => {
     expect(nextVersion('0')).toBe('1');
 });
 
+test('correctly increments 0.0', () => {
+    expect(nextVersion('0.0')).toBe('0.1');
+});
+
 // ASSUMPTION: If there is only one number, it should be considered the first, and can therefore be greater than 9
 test('correctly increments 9', () => {
     expect(nextVersion('9')).toBe('10');

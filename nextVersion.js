@@ -9,7 +9,7 @@ function nextVersion(currentVersion) {
     console.log('nextVersionArray ', nextVersionArray);
 
     // reverse so it's nicer to loop through
-    nextVersionArray.reverse();
+    // nextVersionArray.reverse();
 
     // the last element is always incremented
     // if it's between 0 and 8, add 1
@@ -17,11 +17,30 @@ function nextVersion(currentVersion) {
 
     // loop through elements, possibly use recursion?
 
-    let i = 0;
+    // let i = 0;
 
-    while (i < nextVersionArray.length) {
+    // while (i < nextVersionArray.length) {
+    //     // standard case
+    //     if (nextVersionArray[i] < 9 || i === nextVersionArray.length - 1) {
+    //         nextVersionArray[i] = nextVersionArray[i] + 1;
+    //         break; // finished incrementing, break out of loop
+    //     }
+
+    //     // special case: digit is 9 and needs to be rolled over to 0
+    //     if (nextVersionArray[i] === 9) {
+    //         nextVersionArray[i] = 0;
+    //         // continue because we need to increment the next digit as well
+    //     }
+
+    //     i++;
+    // }
+
+    // Assuming a valid input, so at least one digit
+    let i = nextVersionArray.length - 1;
+
+    while (i >= 0) {
         // standard case
-        if (nextVersionArray[i] < 9 || i === nextVersionArray.length - 1) {
+        if (nextVersionArray[i] < 9 || i === 0) {
             nextVersionArray[i] = nextVersionArray[i] + 1;
             break; // finished incrementing, break out of loop
         }
@@ -32,12 +51,13 @@ function nextVersion(currentVersion) {
             // continue because we need to increment the next digit as well
         }
 
-        i++;
+        i--;
     }
 
     console.log(nextVersionArray);
 
-    const finalVersion = nextVersionArray.reverse().join('.');
+    // const finalVersion = nextVersionArray.reverse().join('.');
+    const finalVersion = nextVersionArray.join('.');
 
     console.log(finalVersion);
 
