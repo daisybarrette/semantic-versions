@@ -21,7 +21,7 @@ function nextVersion(currentVersion) {
 
     while (i < nextVersionArray.length) {
         // standard case
-        if (nextVersionArray[i] < 9) {
+        if (nextVersionArray[i] < 9 || i === nextVersionArray.length - 1) {
             nextVersionArray[i] = nextVersionArray[i] + 1;
             break; // finished incrementing, break out of loop
         }
