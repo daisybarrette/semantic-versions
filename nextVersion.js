@@ -2,50 +2,26 @@ function nextVersion(currentVersion) {
     // Assuming input is a well-formed version number, delimited by periods
     const currentVersionArray = currentVersion.split('.');
 
-    console.log('currentVersionArray ', currentVersionArray);
-
     const nextVersionArray = currentVersionArray.map((num) => parseInt(num));
 
-    console.log('nextVersionArray ', nextVersionArray);
+    /**
+     * Increment the last element of the array:
+     *      if it's between 0 and 8, add 1
+     *      if it's 9, roll over to 0, and attempt to increment the next element
+     */
 
-    // reverse so it's nicer to loop through
-    // nextVersionArray.reverse();
-
-    // the last element is always incremented
-    // if it's between 0 and 8, add 1
-    // if it's 9, roll over to 0, and attempt to increment the next element
-
-    // loop through elements, possibly use recursion?
-
-    // let i = 0;
-
-    // while (i < nextVersionArray.length) {
-    //     // standard case
-    //     if (nextVersionArray[i] < 9 || i === nextVersionArray.length - 1) {
-    //         nextVersionArray[i] = nextVersionArray[i] + 1;
-    //         break; // finished incrementing, break out of loop
-    //     }
-
-    //     // special case: digit is 9 and needs to be rolled over to 0
-    //     if (nextVersionArray[i] === 9) {
-    //         nextVersionArray[i] = 0;
-    //         // continue because we need to increment the next digit as well
-    //     }
-
-    //     i++;
-    // }
-
-    // Assuming a valid input, so at least one digit
+    // Assuming a valid input, so at least one digit, so length will be at least 1, and i will be at least 0
     let i = nextVersionArray.length - 1;
 
     while (i >= 0) {
-        // standard case
+        // Standard case, incrementing the chosen digit by adding 1
+        // OR: The digit that needs to be incremented is the first, which can be greater than 9
         if (nextVersionArray[i] < 9 || i === 0) {
             nextVersionArray[i] = nextVersionArray[i] + 1;
             break; // finished incrementing, break out of loop
         }
 
-        // special case: digit is 9 and needs to be rolled over to 0
+        // Special case: chosen digit is 9 and needs to be rolled over to 0
         if (nextVersionArray[i] === 9) {
             nextVersionArray[i] = 0;
             // continue because we need to increment the next digit as well
@@ -54,12 +30,7 @@ function nextVersion(currentVersion) {
         i--;
     }
 
-    console.log(nextVersionArray);
-
-    // const finalVersion = nextVersionArray.reverse().join('.');
     const finalVersion = nextVersionArray.join('.');
-
-    console.log(finalVersion);
 
     return finalVersion;
 }
